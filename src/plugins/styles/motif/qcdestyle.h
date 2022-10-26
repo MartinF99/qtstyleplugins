@@ -3,7 +3,7 @@
 ** Copyright (C) 2012 Digia Plc and/or its subsidiary(-ies).
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the MNG plugins in the Qt ImageFormats module.
+** This file is part of the QtGui module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -39,27 +39,29 @@
 **
 ****************************************************************************/
 
-#include <QStylePlugin>
-#include "qcleanlooksstyle.h"
 
-QT_BEGIN_NAMESPACE
+#ifndef QCDESTYLE_H
+#define QCDESTYLE_H
 
-class QCleanlooksStylePlugin : public QStylePlugin
+#include "qmotifstyle.h"
+
+class QCDEStyle : public QMotifStyle
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QStyleFactoryInterface" FILE "cleanlooks.json")
-
 public:
-    QStyle *create(const QString &key) override;
+    explicit QCDEStyle(bool useHighlightCols = false);
+    virtual ~QCDEStyle();
+
+    int pixelMetric(PixelMetric metric, const QStyleOption *option = 0,
+                    const QWidget *widget = 0) const Q_DECL_OVERRIDE;
+    void drawControl(ControlElement element, const QStyleOption *opt, QPainter *p,
+                     const QWidget *w = 0) const Q_DECL_OVERRIDE;
+    void drawPrimitive(PrimitiveElement pe, const QStyleOption *opt, QPainter *p,
+                       const QWidget *w = 0) const Q_DECL_OVERRIDE;
+    QPalette standardPalette() const Q_DECL_OVERRIDE;
+    QIcon standardIcon(StandardPixmap standardIcon, const QStyleOption *opt = 0,
+                       const QWidget *widget = 0) const Q_DECL_OVERRIDE;
 };
 
-QStyle *QCleanlooksStylePlugin::create(const QString &key)
-{
-    if (key == "cleanlooks")
-        return new QCleanlooksStyle;
-    return 0;
-}
 
-QT_END_NAMESPACE
-
-#include "plugin.moc"
+#endif // QCDESTYLE_H

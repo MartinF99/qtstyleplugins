@@ -40,23 +40,26 @@
 ****************************************************************************/
 
 #include <QStylePlugin>
-#include "qcleanlooksstyle.h"
+#include "qmotifstyle.h"
+#include "qcdestyle.h"
 
 QT_BEGIN_NAMESPACE
 
-class QCleanlooksStylePlugin : public QStylePlugin
+class QMotifStylePlugin : public QStylePlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QStyleFactoryInterface" FILE "cleanlooks.json")
+    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QStyleFactoryInterface" FILE "motif.json")
 
 public:
-    QStyle *create(const QString &key) override;
+    QStyle *create(const QString &key) override ;
 };
 
-QStyle *QCleanlooksStylePlugin::create(const QString &key)
+QStyle *QMotifStylePlugin::create(const QString &key)
 {
-    if (key == "cleanlooks")
-        return new QCleanlooksStyle;
+    if (key == "motif")
+        return new QMotifStyle;
+    if (key == "cde")
+        return new QCDEStyle;
     return 0;
 }
 
