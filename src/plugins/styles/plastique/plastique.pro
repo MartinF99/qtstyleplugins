@@ -3,7 +3,7 @@ PLUGIN_TYPE = styles
 PLUGIN_CLASS_NAME = QPlastiqueStylePlugin
 load(qt_plugin)
 
-QT = core core-private gui gui-private widgets
+QT = core gui widgets
 
 HEADERS += qplastiquestyle.h
 SOURCES += qplastiquestyle.cpp

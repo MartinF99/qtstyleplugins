@@ -42,12 +42,8 @@
 #ifndef QCLEANLOOKSSTYLE_H
 #define QCLEANLOOKSSTYLE_H
 
-#include <QtWidgets/qproxystyle.h>
-#include <QtCore/qelapsedtimer.h>
-
-QT_BEGIN_HEADER
-
-QT_BEGIN_NAMESPACE
+#include <QProxyStyle>
+#include <QElapsedTimer>
 
 class QProgressBar;
 
@@ -108,9 +104,5 @@ private:
     QElapsedTimer startTime;
     QList<QProgressBar *> animatedProgressBars;
 };
-
-QT_END_NAMESPACE
-
-QT_END_HEADER
 
 #endif // QCLEANLOOKSSTYLE_H

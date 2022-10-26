@@ -43,7 +43,7 @@
 #include "qstylehelper_p.h"
 #include <qstringbuilder.h>
 
-QT_BEGIN_NAMESPACE
+
 
 static const qreal Q_PI   = qreal(3.14159265358979323846);   // pi
 
@@ -176,7 +176,7 @@ QPolygonF calcLines(const QStyleOptionSlider *dial)
     int notches = (dial->maximum + ns - 1 - dial->minimum) / ns;
     if (notches <= 0)
         return poly;
-    if (dial->maximum < dial->minimum || dial->maximum - dial->minimum > 1000) {
+    if ( (dial->maximum < dial->minimum) || (dial->maximum - dial->minimum > 1000)) {
         int maximum = dial->minimum + 1000;
         notches = (maximum + ns - 1 - dial->minimum) / ns;
     }
@@ -388,4 +388,3 @@ QWindow *styleObjectWindow(QObject *so)
 }
 
 }
-QT_END_NAMESPACE

@@ -42,7 +42,6 @@
 #include <QStylePlugin>
 #include "qplastiquestyle.h"
 
-QT_BEGIN_NAMESPACE
 
 class QPlastiqueStylePlugin : public QStylePlugin
 {
@@ -50,7 +49,7 @@ class QPlastiqueStylePlugin : public QStylePlugin
     Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QStyleFactoryInterface" FILE "plastique.json")
 
 public:
-    QStyle *create(const QString &key);
+    QStyle *create(const QString &key) override;
 };
 
 QStyle *QPlastiqueStylePlugin::create(const QString &key)
@@ -60,6 +59,5 @@ QStyle *QPlastiqueStylePlugin::create(const QString &key)
     return 0;
 }
 
-QT_END_NAMESPACE
 
 #include "plugin.moc"

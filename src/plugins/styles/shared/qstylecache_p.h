@@ -42,12 +42,11 @@
 #ifndef QSTYLECACHE_P_H
 #define QSTYLECACHE_P_H
 
-QT_BEGIN_NAMESPACE
 
-#include <QtGui/qimage.h>
-#include <QtGui/qpixmap.h>
-#include <QtGui/qpainter.h>
-#include <QtGui/qpixmapcache.h>
+#include <QImage>
+#include <QPixmap>
+#include <QPainter>
+#include <QPixmapCache>
 #include "qstylehelper_p.h"
 
 //
@@ -80,7 +79,7 @@ inline QPixmap styleCachePixmap(const QSize &size)
     int txType = painter->deviceTransform().type() | painter->worldTransform().type(); \
     bool doPixmapCache = (txType <= QTransform::TxTranslate) \
             || (painter->deviceTransform().type() == QTransform::TxScale); \
-    if (doPixmapCache && QPixmapCache::find(unique, internalPixmapCache)) { \
+    if (doPixmapCache && QPixmapCache::find(unique, &internalPixmapCache)) { \
         painter->drawPixmap(option->rect.topLeft(), internalPixmapCache); \
     } else { \
         if (doPixmapCache) { \
@@ -100,6 +99,6 @@ inline QPixmap styleCachePixmap(const QSize &size)
         } \
     }
 
-QT_END_NAMESPACE
+
 
 #endif // QSTYLECACHE_P_H

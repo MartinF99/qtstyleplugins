@@ -57,7 +57,6 @@
 // We mean it.
 //
 
-QT_BEGIN_NAMESPACE
 
 // internal helper. Converts an integer value to an unique string token
 template <typename T>
@@ -91,6 +90,6 @@ template <typename T>
     typedef QString ConvertTo;
 };
 
-QT_END_NAMESPACE
+
 
 #endif // QHEXSTRING_P_H
